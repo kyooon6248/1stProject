@@ -1,0 +1,21 @@
+rate = soups[0].find('div', {'class':'vivinoRating_averageValue__uDdPM'}).text
+rate = float(rate)
+
+name = soups[0].find('a', {'class':'wine'}).text.replace('\n', '')
+
+country = soups[0].find('div', {'class':'breadCrumbs__breadCrumbs--2pkcX'}).text.split('·')[0], 
+region = soups[0].find('div', {'class':'breadCrumbs__breadCrumbs--2pkcX'}).text.split('·')[1], 
+farm = soups[0].find('div', {'class':'breadCrumbs__breadCrumbs--2pkcX'}).text.split('·')[2], 
+red_white = soups[0].find('div', {'class':'breadCrumbs__breadCrumbs--2pkcX'}).text.split('·')[3], 
+variety = soups[0].find('div', {'class':'breadCrumbs__breadCrumbs--2pkcX'}).text.split('·')[4]
+
+cost = soups[0].find('span', {'class':'purchaseAvailabilityPPC__amount--2_4GT'}).text[1:].replace(',','.')
+cost = float(cost)
+
+vintage = soups[0].find('span', {'class' : 'vintage'}).text[-5:-1]
+
+rating_num = int(soups[0].find('div',{'class':'vivinoRating_caption__xL84P'}).text.split(' ')[0])
+
+notes = soups[0].find_all('div', {'class':'tasteNote__textContainer--2xPXc'})
+for i in notes:
+    print(i.text.split('of')[1][:-6])
